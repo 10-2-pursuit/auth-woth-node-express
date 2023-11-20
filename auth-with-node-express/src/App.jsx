@@ -7,7 +7,7 @@ import './App.css'
 import SignUp from './pages/SignUp';
 
 function App() {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
 
   return (
     <>
@@ -18,18 +18,16 @@ function App() {
           </Route>
           <Route path='/signup' element={ <SignUp /> } />
           <Route path='/user' element={ <UserPortal /> } />
-          <Route path="/users/:userId/profile" element={
-              <ProtectedRoute 
-                element={ <UserPortal /> } 
-                currentUser = { currentUser }
-              /> 
-          }>
-          </Route>
+          <Route path="/users/:userId/profile" 
+            element={<ProtectedRoute element={UserPortal} currentUser={currentUser} />}
+            />
         </Routes>
       </Router>
     </>
   )
 }
+          
+      
      
             
          
