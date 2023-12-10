@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const API_URL = meta.env.VITE_API_URL;
 const AuthForm = ({ authFormType }) => {
     const navigate = useNavigate();
+   
     handleFormAuth = () => {
 
     } 
