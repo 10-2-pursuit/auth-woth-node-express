@@ -19,7 +19,7 @@ const AuthForm = ({ authFormType }) => {
     }
 
     return (
-        <form onSubmit={}>
+        <form onSubmit={ () => {}}>
             <input type='text'>
             
             </input>

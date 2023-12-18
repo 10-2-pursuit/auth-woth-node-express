@@ -20,38 +20,10 @@ function App() {
     <Reset />
       <Router>
         <Routes>
-          <Route
-            path="/login"
-            element={
-              <PublicRoute
-                element={Login}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
-          <Route path="/" element={<Navigate to="/login" />}></Route>
-
-          <Route
-            path="/signup"
-            element={
-              <PublicRoute
-                element={SignUp}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
-          <Route
-            path="/users/:userId/profile"
-            element={
-              <ProtectedRoute
-                element={UserPortal}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            }
-          />
+          {/* PUBLIC ROUTE FOR LOGIN */}
+          {/* PUBLIC ROUTE SIGNUP */}
+          {/* ROUTE FOR "/" WITH REDIRECT TO LOGIN ROUTE */}
+          {/* ROUTE TO USER PROFILE ROUTE WITH WILDCARD MATCHER */}
         </Routes>
       </Router>
     </>

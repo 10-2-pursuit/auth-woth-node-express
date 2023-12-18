@@ -8,7 +8,8 @@ function UserPortal ({currentUser, setCurrentUser}){
             <ProfileMain>
                 <ProfileNav>
                     <WelcomeUser>Welcome back, {currentUser.firstname}!</WelcomeUser>
-                    <Logout onClick={() => setCurrentUser(null) }>Logout</Logout>
+                    {/* WE WANT TO LOGOUT A USER HERE ON CLICK */}
+                    <Logout onClick={() => {}}>Logout</Logout>
                 </ProfileNav>
                 <ContactInfo currentUser={currentUser} />
             </ProfileMain>
