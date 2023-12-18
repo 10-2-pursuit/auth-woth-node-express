@@ -12,7 +12,7 @@ const db = require("../db/dbConfig.js");
 //     }
 // }
 const getOneUser = async (id) => {
-    try{
+    try {
         const oneUser = await db.one("SELECT * FROM users WHERE id=$1", id)
         return oneUser
     } catch (error){
@@ -20,23 +20,23 @@ const getOneUser = async (id) => {
     }
 };
 const getOneUserByEmail = async ({email}) => {
-    try{
+    try {
         const oneUser = await db.oneOrNone("SELECT * FROM users WHERE email=$1", email)
         return oneUser
     } catch (error){
         return error
     }
 };
-const createUser = async (bookmark) => {
+const createUser = async (user) => {
     try {
-        const createdUser = await db.one("INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *", [bookmark.firstname, bookmark.lastname, bookmark.email, bookmark.password])
+        const createdUser = await db.one("INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING *", [user.firstname, user.lastname, user.email, user.password])
         return createdUser
     } catch (error) {
         return error
     }
 }
 
-// const updateBookmark = async (id, bookmark) => {
+// const updateuser = async (id, bookmark) => {
 //     try {
 //         const { name, url, category, is_favorite } = bookmark;
 //         const updatedBookmark = await db.one(
