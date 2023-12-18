@@ -3,14 +3,7 @@
 
 const db = require("../db/dbConfig.js");
 
-// const getAllBookmarks = async () => {
-//     try {
-//         const allBookmarks = await db.any("SELECT * FROM bookmarks");
-//         return allBookmarks
-//     } catch(err) {
-//         return err
-//     }
-// }
+
 const getOneUser = async (id) => {
     try {
         const oneUser = await db.one("SELECT * FROM users WHERE id=$1", id)
@@ -36,18 +29,6 @@ const createUser = async (user) => {
     }
 }
 
-// const updateuser = async (id, bookmark) => {
-//     try {
-//         const { name, url, category, is_favorite } = bookmark;
-//         const updatedBookmark = await db.one(
-//             "UPDATE bookmarks SET name=$1, url=$2,category=$3, is_favorite=$4 WHERE id=$5 RETURNING *",
-//             [name, url, category, is_favorite, id]
-//         );
-//         return updatedBookmark
-//     } catch(err) {
-//         return err
-//     }
-// };
 
 module.exports = {
     getOneUser,

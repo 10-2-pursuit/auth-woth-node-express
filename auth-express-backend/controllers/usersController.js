@@ -71,28 +71,6 @@ users.post("/", async (req, res) => {
   }
 });
 
-// bookmarks.delete("/:id", async (req,res) => {
-//     try {
-//         const { id } = req.params;
-//         const deletedBookmark = await deleteBookmark(id);
-//         if(deletedBookmark) {
-//             res.status(200).json({success:true, payload: {data: deletedBookmark}})
-//         } else {
-//             res.status(404).json("bookmark not found - uh oh")
-//         }
-//     } catch(err) {
-//         res.send(err)
-//     }
-// });
 
-// bookmarks.put("/:id", async(req, res) => {
-//     const { id } = req.params;
-//     const updatedBookmark = await updateBookmark(id, req.body);
-//     if(updatedBookmark.id) {
-//         res.status(200).json(updatedBookmark);
-//     } else (
-//         res.status(404).json("no bookmark found with that id")
-//     )
-// })
 
 module.exports = users;
