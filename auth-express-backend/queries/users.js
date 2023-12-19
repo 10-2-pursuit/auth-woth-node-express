@@ -4,8 +4,9 @@
 const db = require("../db/dbConfig.js");
 
 const getOneUser = async (id) => {
+  console.log(typeof(id))
   try {
-    const oneUser = await db.one("SELECT * FROM users WHERE id=$1", id);
+    const oneUser = await db.one('SELECT * FROM users WHERE id=$1', id);
     return oneUser;
   } catch (error) {
     console.error(error);

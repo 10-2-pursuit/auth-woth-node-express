@@ -1,8 +1,5 @@
 
 DROP DATABASE IF EXISTS auth_dev;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS posts;
-
 
 CREATE DATABASE auth_dev;
 
