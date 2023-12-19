@@ -21,9 +21,13 @@ function App() {
       <Router>
         <Routes>
           {/* PUBLIC ROUTE FOR LOGIN */}
+          <Route path="/login" element={<Login/>}/>
           {/* PUBLIC ROUTE SIGNUP */}
+          <Route path='/signup' element={<SignUp/>}/>
           {/* ROUTE FOR "/" WITH REDIRECT TO LOGIN ROUTE */}
+          <Route path="/" element={<ProtectedRoute/>}/>
           {/* ROUTE TO USER PROFILE ROUTE WITH WILDCARD MATCHER */}
+          <Route path='/profile/*' element={<PublicRoute/>}/>
         </Routes>
       </Router>
     </>
