@@ -18,16 +18,15 @@ users.post("/login", async (req, res) => {
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
-        res.json(user)
+        res.json(user);
       } else {
-        res.status(401).json({ error: "Invalid credentials"})
+        res.status(401).json({ error: "Invalid credentials" });
       }
     } else {
-      res.status(404).json({ error: "User no found"})
+      res.status(404).json({ error: "User no found" });
     }
   } catch (error) {
-    res.status(500).json({ error: 
-      "Error logging in"})
+    res.status(500).json({ error: "Error logging in" });
   }
 });
 
@@ -35,15 +34,15 @@ users.post("/login", async (req, res) => {
 users.post("/", async (req, res) => {
   try {
     const { password, ...userData } = req.body;
-    const salt = await bcrypt.genSalt(10)
+    const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const createdUser = await createUser({
       ...userData,
-      password: hashedPassword
+      password: hashedPassword,
     });
     res.json(createdUser);
   } catch (error) {
-    res.status(500).json({ error: "Error Creating User" })
+    res.status(500).json({ error: "Error Creating User" });
   }
 });
 
@@ -53,9 +52,8 @@ users.get("/:id", async (req, res) => {
   if (oneUser) {
     res.json(oneUser);
   } else {
-    res.status(404).json({ error: "User Not Found"})
+    res.status(404).json({ error: "User Not Found" });
   }
-})
-
+});
 
 module.exports = users;
