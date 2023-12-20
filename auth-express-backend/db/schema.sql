@@ -15,7 +15,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE posts (
-  post_id INT PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   title VARCHAR(100) NOT NULL,
   content TEXT,
   creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

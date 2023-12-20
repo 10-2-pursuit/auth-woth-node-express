@@ -26,7 +26,7 @@ const getOnePostByUser = async (user_id, id) => {
 
 const createPost = async (user_id, post) => {
   try {
-    const { title, content, user_id } = post;
+    const { title, content } = post;
     const createdPost = await db.one(
       "INSERT INTO posts (title, content, user_id) VALUES ($1, $2, $3) RETURNING *",
       [title, content, user_id]
@@ -51,8 +51,8 @@ const deleteOnePostForUser = async (user_id, post_id) => {
 
 const updatePostForUser = async (user_id, post_id) => {
     try {
-        const { title, content, user_id } = post;
-        const updatedPost = await db.one("UPDATE posts SET title=$1, content=$2, WHERE user_id=$3 AND post_id=$4 RETURNING *", [title, content, user_id, post_id]);
+        const { title, content } = post;
+        const updatedPost = await db.one("UPDATE posts SET title=$1, content=$2 WHERE user_id=$3 AND post_id=$4 RETURNING *", [title, content, user_id, post_id]);
         return updatedPost
     } catch (error) {
         console.error(error)

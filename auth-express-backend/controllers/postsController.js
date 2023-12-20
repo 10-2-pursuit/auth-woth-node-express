@@ -8,6 +8,7 @@ const {
   updatePostForUser,
 } = require("../queries/posts");
 
+
 posts.get("/", async (req, res) => {
   const { userId } = req.params;
   try {
@@ -40,7 +41,7 @@ posts.post("/", async (req, res) => {
     if (createdPost) {
       res.json(createdPost);
     } else {
-      res.json(400).json({ error: "Failed to create Post" });
+      res.status(400).json({ error: "Failed to create Post" });
     }
   } catch (error) {
     console.error(error);

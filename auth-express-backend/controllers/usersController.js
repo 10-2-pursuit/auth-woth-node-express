@@ -1,5 +1,6 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
+const users = express.Router();
 
 const {
   getOneUser,
@@ -7,10 +8,13 @@ const {
   createUser,
 } = require("../queries/users.js");
 
+const postsController = require("../controllers/postsController.js")
+
+users.use("/:userId/posts", postsController)
+
 const { checkName } = require("../validations/checkUser.js")
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
-const users = express.Router();
 
 // LOGIN ROUTE
 users.post("/login", async (req, res) => {
