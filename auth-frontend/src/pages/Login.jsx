@@ -49,28 +49,39 @@ const Login = ({ setCurrentUser }) => {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      processRequest();
-      console.log(email, password, " this is what we are sending")
-      axios.post(`${VITE_API_URL}/users/login`, {
-        email, 
-        password
-      })
-        .then(res => {
-          console.log(res, " response")
-          setCurrentUser(res.data.user)
-
+      if(processRequest()){
+        console.log(email, password, " this is what we are sending")
+        axios.post(`${VITE_API_URL}/users/login`, {
+          email, 
+          password
         })
-        .catch(err => {
-          console.error(err)
-          // need to establish what errors that are fired back look like
-          // setErrors([err])
-        })
-    //   await dispatch({type: actions.LOGIN});
+          .then(res => {
+            console.log(res, " response")
+            setCurrentUser(res.data.user)
+  
+          })
+          .catch(err => {
+            console.error(err)
+            // need to establish what errors that are fired back look like
+            // setErrors([err])
+          })
+      //   await dispatch({type: actions.LOGIN});
+      } else {
+        console.error("An error has occurred: \n", ...errors)
+      }
+      
 
     }
   
     const processRequest = () => {
-      
+      let newErrors = [...(validatesEmail()), ...(validatesPassword())]
+      if(newErrors.length > 0){
+        setErrors(newErrors)
+        return false
+      } else {
+        setErrors([])
+        return true
+      }
      
     }
    
