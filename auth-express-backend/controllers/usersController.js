@@ -6,6 +6,8 @@ const {
   getOneUserByEmail,
   createUser,
 } = require("../queries/users.js");
+
+const { checkName } = require("../validations/checkUser.js")
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 const users = express.Router();
@@ -23,7 +25,7 @@ users.post("/login", async (req, res) => {
         res.status(401).json({ error: "Invalid credentials" });
       }
     } else {
-      res.status(404).json({ error: "User no found" });
+      res.status(404).json({ error: "User not found" });
     }
   } catch (error) {
     res.status(500).json({ error: "Error logging in" });
@@ -31,7 +33,7 @@ users.post("/login", async (req, res) => {
 });
 
 // SIGN UP ROUTE
-users.post("/", async (req, res) => {
+users.post("/", checkName, async (req, res) => {
   try {
     const { password, ...userData } = req.body;
     const salt = await bcrypt.genSalt(10);
