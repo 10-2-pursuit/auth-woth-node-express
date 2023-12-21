@@ -65,8 +65,6 @@ const Login = ({ setCurrentUser }) => {
           // need to establish what errors that are fired back look like
           // setErrors([err])
         })
-    //   await dispatch({type: actions.LOGIN});
-
     }
   
     const processRequest = () => {
